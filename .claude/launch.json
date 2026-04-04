@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Pennysnipe Web",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["app.py"],
+      "port": 5000
+    },
+    {
+      "name": "Deal Finder CLI + API",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["deal_finder.py"],
+      "port": 8765
+    }
+  ]
+}

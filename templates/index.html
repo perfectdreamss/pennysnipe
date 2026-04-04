@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pennysnipe finds extreme discounts and price errors across 20+ deal sites in real time." />
+  <title>Pennysnipe — Extreme Deal Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- ═══════════════════════════════════════════════════════
+       GOOGLE ADSENSE — paste your site verification tag here
+       after approval at google.com/adsense
+       ═══════════════════════════════════════════════════════ -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body class="dark">
+
+<!-- ── Header ──────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">&#9733; Pennysnipe</a>
+    <div class="header-stats">
+      <span class="stat"><strong id="statTotal">{{ total }}</strong> deals</span>
+      <span class="stat-sep">·</span>
+      <span class="stat"><strong id="statSources">{{ sources|length }}</strong> sources</span>
+      <span class="stat-sep">·</span>
+      <span class="stat">updated <strong id="statLastScan">{{ last_scan }}</strong></span>
+    </div>
+    <div class="header-right">
+      <button id="themeToggle" title="Cycle theme">&#9790;</button>
+      <button id="scanNow" title="Scan now">&#8635; Scan</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── Top Ad Banner (728×90 leaderboard) ─────────────────────────────────── -->
+<div class="ad-zone ad-leaderboard">
+  <!-- ADSENSE SLOT — replace with your ad unit code -->
+  <!--
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
+  <div class="ad-placeholder">Ad — 728×90 Leaderboard</div>
+</div>
+
+<!-- ── Main layout ─────────────────────────────────────────────────────────── -->
+<main>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <input id="searchBox" type="search" placeholder="&#128269; Search deals..." />
+    <select id="sourceFilter">
+      <option value="">All sources</option>
+      {% for src in sources %}
+      <option value="{{ src }}">{{ src }}</option>
+      {% endfor %}
+    </select>
+    <input id="maxPriceInput" type="number" min="0" step="0.01" placeholder="Max price $" />
+    <select id="sortSelect" title="Sort by">
+      <option value="ts">Newest first</option>
+      <option value="score">Best score</option>
+    </select>
+    <button id="applyFilters" class="btn-primary">Filter</button>
+    <button id="clearFilters" class="btn-ghost">Clear</button>
+    <span id="newBadge" class="new-badge hidden">&#9650; New deals!</span>
+  </div>
+
+  <div class="layout">
+
+    <!-- Deal grid -->
+    <div class="deal-col">
+      <div id="dealGrid" class="deal-grid">
+        <div class="loading">Loading deals…</div>
+      </div>
+      <div class="load-more-row">
+        <button id="loadMore" class="btn-ghost hidden">Load more</button>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Sidebar Ad (300×250) -->
+      <div class="ad-zone ad-rectangle">
+        <!-- ADSENSE SLOT — replace with your ad unit code -->
+        <!--
+        <ins class="adsbygoogle" style="display:block;width:300px;height:250px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
+        <div class="ad-placeholder">Ad — 300×250</div>
+      </div>
+
+      <!-- Stats card -->
+      <div class="sidebar-card">
+        <h3>Live Stats</h3>
+        <div class="stat-row"><span>Total deals found</span><strong id="sideTotal">{{ total }}</strong></div>
+        <div class="stat-row"><span>Found today</span><strong id="sideToday">—</strong></div>
+        <div class="stat-row"><span>Confirmed live</span><strong id="sideLive">—</strong></div>
+        <div class="stat-row"><span>Active sources</span><strong id="sideSources">{{ sources|length }}</strong></div>
+        <div class="stat-row"><span>Scans run</span><strong id="sideScanCount">{{ scan_count }}</strong></div>
+      </div>
+
+      <!-- Support card -->
+      <div class="sidebar-card support-card">
+        <h3>&#9749; Support</h3>
+        <p>Help keep Pennysnipe free and ad-light.</p>
+        <a href="https://ko-fi.com/dreamss7036" target="_blank" class="btn-primary btn-block">Buy me a coffee</a>
+      </div>
+
+      <!-- Second sidebar Ad (300×600 half-page) -->
+      <div class="ad-zone ad-halfpage">
+        <!-- ADSENSE SLOT — replace with your ad unit code -->
+        <!--
+        <ins class="adsbygoogle" style="display:block;width:300px;height:600px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
+        <div class="ad-placeholder">Ad — 300×600</div>
+      </div>
+
+    </aside>
+  </div>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <span>&#9733; Pennysnipe &copy; 2026</span>
+    <span>Deals updated every 2 minutes from 20+ sources.</span>
+    <span>Some links may be affiliate links. <a href="#">Disclaimer</a></span>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python -c \"import feedparser; print\\(''feedparser OK, version'', feedparser.__version__\\)\")",
+      "Bash(timeout 30 python -c \":*)",
+      "Bash(python -c \":*)",
+      "Bash(set PYTHONUTF8=1)",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''deal_finder.py'', doraise=True\\); print\\(''OK''\\)\")",
+      "Bash(python -c \"from PIL import Image, ImageDraw, ImageFont; print\\(''Pillow OK''\\)\")",
+      "Bash(python make_icons.py)",
+      "Bash(python -c \"import flask, apscheduler; print\\(''''Flask'''', flask.__version__, ''''| APScheduler OK''''\\)\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3:*)",
+      "Bash(where python:*)",
+      "Bash(python:*)",
+      "Bash(find . -type f -exec ls -lh {})"
+    ]
+  }
+}

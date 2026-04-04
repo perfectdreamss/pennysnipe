@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pennysnipe</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="dark">
+<div id="app">
+
+  <header>
+    <span class="logo">&#9733; Pennysnipe</span>
+    <div class="controls">
+      <select id="themeSelect" title="Theme">
+        <option value="dark">Dark</option>
+        <option value="hacker">Hacker</option>
+        <option value="neon">Neon</option>
+        <option value="retro">Retro</option>
+        <option value="light">Light</option>
+      </select>
+      <button id="settingsBtn" title="Settings">&#9881;</button>
+      <button id="clearBtn"    title="Mark all read">&#10003;</button>
+      <button id="refreshBtn"  title="Scan now">&#8635;</button>
+    </div>
+  </header>
+
+  <!-- Settings panel -->
+  <div id="settingsPanel" class="hidden">
+    <div class="setting-row">
+      <label>Max price ($)</label>
+      <input id="setMaxPrice" type="number" min="0" step="0.01" placeholder="10.00" />
+    </div>
+    <div class="setting-row">
+      <label>Min discount (%)</label>
+      <input id="setMinDiscount" type="number" min="1" max="99" placeholder="80" />
+    </div>
+    <div class="setting-row">
+      <label>Amazon affiliate tag</label>
+      <input id="setAffTag" type="text" placeholder="yourtag-20" />
+    </div>
+    <div class="setting-divider"></div>
+    <div class="setting-row premium-row">
+      <label>&#128081; License key</label>
+      <input id="setLicenseKey" type="text" placeholder="DF-XXXX-XXXX-XXXX" />
+    </div>
+    <div class="setting-row" style="justify-content:space-between; align-items:center;">
+      <a id="getPremiumLink" href="#" target="_blank" class="get-premium-btn">Get Premium Key</a>
+      <button id="saveSettings">Save</button>
+    </div>
+    <div class="premium-perks">
+      Premium removes ads &nbsp;&#183;&nbsp; priority support &nbsp;&#183;&nbsp; unlimited deal history
+    </div>
+  </div>
+
+  <div id="status"></div>
+  <div id="twitterStatus" class="twitter-status"></div>
+  <div id="dealList"></div>
+
+  <!-- Ad banner (hidden for premium users) -->
+  <div id="adBanner" class="ad-banner">
+    <span class="ad-label">Ad</span>
+    <a id="adLink" href="#" target="_blank" rel="noopener noreferrer" id="adText"></a>
+    <button id="adClose" title="Close ad">&#215;</button>
+  </div>
+
+  <footer>
+    <span id="footerCount"></span>
+    &nbsp;&#183;&nbsp;
+    <a id="kofiLink" href="https://ko-fi.com/dreamss7036" target="_blank">&#9749; Support</a>
+    &nbsp;&#183;&nbsp;
+    scans every 2 min
+  </footer>
+
+</div>
+<script src="popup.js"></script>
+</body>
+</html>

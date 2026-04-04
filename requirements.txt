@@ -1,0 +1,5 @@
+feedparser>=6.0
+rich>=13.0
+flask>=3.0
+apscheduler>=3.10
+gunicorn>=21.0

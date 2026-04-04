@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Pennysnipe — Extreme Discount Hunter",
+  "version": "1.1.0",
+  "description": "Automatically scans 15+ deal sites + Twitter every 2 minutes for extreme discounts. Get notified the moment prices hit near zero.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": [
+    "https://slickdeals.net/*",
+    "https://www.reddit.com/*",
+    "https://www.dealnews.com/*",
+    "https://9to5toys.com/*",
+    "https://9to5mac.com/*",
+    "https://hip2save.com/*",
+    "https://bensbargains.com/*",
+    "https://www.bradsdeals.com/*",
+    "https://thekrazycouponlady.com/*",
+    "https://www.woot.com/*",
+    "https://www.techbargains.com/*",
+    "https://nitter.privacydev.net/*",
+    "https://nitter.poast.org/*",
+    "https://nitter.cz/*",
+    "https://nitter.1d4.us/*",
+    "https://nitter.net/*",
+    "https://server.ethicalads.io/*",
+    "https://xcancel.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Deal Finder",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
