@@ -14,7 +14,9 @@
       "Bash(python3:*)",
       "Bash(where python:*)",
       "Bash(python:*)",
-      "Bash(find . -type f -exec ls -lh {})"
+      "Bash(find . -type f -exec ls -lh {})",
+      "Bash(taskkill /F /IM python.exe)",
+      "Bash(curl -s http://localhost:5000/api/stats)"
     ]
   }
 }

@@ -8,6 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8763345097743872" crossorigin="anonymous"></script>
 </head>
@@ -48,17 +52,17 @@
 
   <!-- Filter bar -->
   <div class="filter-bar">
-    <input id="searchBox" type="search" placeholder="&#128269; Search deals..." />
+    <input id="searchBox" type="search" placeholder="Search deals…" />
     <select id="sourceFilter">
-      <option value="">All sources</option>
+      <option value="">All Sources</option>
       {% for src in sources %}
       <option value="{{ src }}">{{ src }}</option>
       {% endfor %}
     </select>
-    <input id="maxPriceInput" type="number" min="0" step="0.01" placeholder="Max price $" />
+    <input id="maxPriceInput" type="number" min="0" step="0.01" placeholder="Max Price $" />
     <select id="sortSelect" title="Sort by">
-      <option value="ts">Newest first</option>
-      <option value="score">Best score</option>
+      <option value="ts">Newest First</option>
+      <option value="score">Best Score</option>
     </select>
     <button id="applyFilters" class="btn-primary">Filter</button>
     <button id="clearFilters" class="btn-ghost">Clear</button>
@@ -131,7 +135,7 @@
   <div class="footer-inner">
     <span>&#9733; Pennysnipe &copy; 2026</span>
     <span>Deals updated every 2 minutes from 20+ sources.</span>
-    <span>Some links may be affiliate links. <a href="#">Disclaimer</a></span>
+    <span>Some links may be affiliate links. &nbsp;<a href="/privacy">Privacy Policy</a> · <a href="/privacy#affiliate">Disclaimer</a></span>
   </div>
 </footer>
 

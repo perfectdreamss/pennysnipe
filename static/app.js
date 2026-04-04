@@ -80,6 +80,23 @@ function timeAgo(ts) {
   return `${Math.floor(s / 86400)}d ago`;
 }
 
+// ── Format reason text ─────────────────────────────────────────────────────────
+function formatReason(reason) {
+  if (!reason) return '';
+  let r = reason.trim();
+  // 'keyword: "price error"' → 'Price Error'
+  if (r.startsWith('keyword: "') && r.endsWith('"')) {
+    r = r.slice(10, -1).replace(/\b\w/g, c => c.toUpperCase());
+    return r;
+  }
+  // 'price $10.00' → 'Price $10.00'
+  if (r.startsWith('price $')) return 'Price ' + r.slice(6);
+  // '99% off' → '99% Off'
+  r = r.replace(/\boff\b/g, 'Off');
+  // Capitalise first letter
+  return r.charAt(0).toUpperCase() + r.slice(1);
+}
+
 // ── HTML escape ────────────────────────────────────────────────────────────────
 function escHtml(str) {
   return String(str ?? "")
@@ -180,7 +197,7 @@ function buildCard(deal) {
       ${escHtml(deal.title)}
     </a>
     <div class="deal-bottom">
-      <span class="deal-reason">${escHtml(deal.reason)}</span>
+      <span class="deal-reason">${escHtml(formatReason(deal.reason))}</span>
       <button class="confirm-btn${alreadyConfirmed ? " confirmed" : ""}"
               data-id="${escHtml(deal.id)}"
               ${alreadyConfirmed ? "disabled" : ""}>

@@ -75,8 +75,11 @@ _BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 # ── Database ───────────────────────────────────────────────────────────────────
 
 def get_db():
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30, check_same_thread=False)
     conn.row_factory = sqlite3.Row
+    # WAL mode allows concurrent reads alongside a single writer
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
     return conn
 
 def init_db():
@@ -466,6 +469,10 @@ def index():
         last_scan=_last_scan or "Starting...",
         scan_count=_scan_count,
     )
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
 @app.route("/api/deals")
 def api_deals():
