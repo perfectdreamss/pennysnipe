@@ -121,14 +121,33 @@ EXTREME_KEYWORDS = [
 
 # If any of these appear in the deal text, skip it entirely
 EXCLUDE_KEYWORDS = [
+    # Food delivery / restaurants
     "uber eats", "doordash", "grubhub", "instacart", "postmates", "seamless",
-    "promo code", "coupon code", "discount code", "voucher", "code:",
-    "free trial", "per month", "/month", "monthly", "subscription", "annual plan",
-    "gift card", "e-gift", "egift", "store credit",
-    "free shipping", "free ship", "ship free",
     "restaurant", "food delivery", "meal kit", "takeout", "takeaway",
+    # Coupon / promo code noise
+    "promo code", "coupon code", "discount code", "voucher", "code:",
+    # Subscriptions / recurring
+    "free trial", "per month", "/month", "monthly", "subscription", "annual plan",
+    # Gift cards / credit
+    "gift card", "e-gift", "egift", "store credit",
+    # Shipping-only "deals"
+    "free shipping", "free ship", "ship free",
+    # Cashback noise
     "% cashback", "cash back", "rakuten", "ibotta",
+    # In-store / app-only
     "app only", "in-store only", "in store only",
+    # Generic navigation titles — not actual product deals
+    "here's the deal", "deals under $", "deal of the day", "deals of the day",
+    "today's deals", "lightning deals", "shop deals", "see more deals",
+    "all deals", "view deals", "browse deals", "more deals", "best deals",
+    "top deals", "hot deals", "weekly deals", "daily deals", "featured deals",
+    "weekly ad", "sales ad", "circular",
+    # Generic call-to-action titles
+    "buy now at amazon", "buy now at", "shop now at", "click here",
+    "sign up", "subscribe now", "newsletter",
+    # Reddit non-deal posts
+    "work is offering", "anyone know", "question:", "discussion:",
+    "looking for", "help with", "advice on", "what do you think",
 ]
 
 # ── RSS feeds ─────────────────────────────────────────────────────────────────

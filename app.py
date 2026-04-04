@@ -58,14 +58,33 @@ KEYWORDS = [
 
 # If any of these appear in the deal text, skip it entirely
 EXCLUDE_KEYWORDS = [
+    # Food delivery / restaurants
     "uber eats", "doordash", "grubhub", "instacart", "postmates", "seamless",
-    "promo code", "coupon code", "discount code", "voucher", "code:",
-    "free trial", "per month", "/month", "monthly", "subscription", "annual plan",
-    "gift card", "e-gift", "egift", "store credit",
-    "free shipping", "free ship", "ship free",
     "restaurant", "food delivery", "meal kit", "takeout", "takeaway",
+    # Coupon / promo code noise
+    "promo code", "coupon code", "discount code", "voucher", "code:",
+    # Subscriptions / recurring
+    "free trial", "per month", "/month", "monthly", "subscription", "annual plan",
+    # Gift cards / credit
+    "gift card", "e-gift", "egift", "store credit",
+    # Shipping-only "deals"
+    "free shipping", "free ship", "ship free",
+    # Cashback noise
     "% cashback", "cash back", "rakuten", "ibotta",
+    # In-store / app-only (can't buy online easily)
     "app only", "in-store only", "in store only",
+    # Generic navigation titles — not actual product deals
+    "here's the deal", "deals under $", "deal of the day", "deals of the day",
+    "today's deals", "lightning deals", "shop deals", "see more deals",
+    "all deals", "view deals", "browse deals", "more deals", "best deals",
+    "top deals", "hot deals", "weekly deals", "daily deals", "featured deals",
+    "weekly ad", "sales ad", "circular",
+    # Generic call-to-action titles
+    "buy now at amazon", "buy now at", "shop now at", "click here",
+    "sign up", "subscribe now", "newsletter",
+    # Reddit non-deal posts
+    "work is offering", "anyone know", "question:", "discussion:",
+    "looking for", "help with", "advice on", "what do you think",
 ]
 
 _SSL_CTX    = ssl.create_default_context()
@@ -473,6 +492,27 @@ def index():
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
+
+@app.route("/robots.txt")
+def robots():
+    return (
+        "User-agent: *\nAllow: /\nSitemap: https://pennysnipe.com/sitemap.xml\n",
+        200, {"Content-Type": "text/plain"}
+    )
+
+@app.route("/sitemap.xml")
+def sitemap():
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for path, freq, priority in [
+        ("/",        "hourly",  "1.0"),
+        ("/privacy", "monthly", "0.3"),
+    ]:
+        xml += f"  <url><loc>https://pennysnipe.com{path}</loc>"
+        xml += f"<changefreq>{freq}</changefreq>"
+        xml += f"<priority>{priority}</priority></url>\n"
+    xml += "</urlset>"
+    return xml, 200, {"Content-Type": "application/xml"}
 
 @app.route("/api/deals")
 def api_deals():
