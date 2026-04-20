@@ -493,6 +493,10 @@ def index():
 def privacy():
     return render_template("privacy.html")
 
+@app.route("/game")
+def game():
+    return app.send_static_file("game.html")
+
 @app.route("/robots.txt")
 def robots():
     return (
