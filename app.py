@@ -493,6 +493,10 @@ def index():
 def privacy():
     return render_template("privacy.html")
 
+@app.route("/2hi")
+def two_hi():
+    return render_template("2hi.html")
+
 @app.route("/robots.txt")
 def robots():
     return (
@@ -506,6 +510,7 @@ def sitemap():
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for path, freq, priority in [
         ("/",        "hourly",  "1.0"),
+        ("/2hi",     "weekly",  "0.6"),
         ("/privacy", "monthly", "0.3"),
     ]:
         xml += f"  <url><loc>https://pennysnipe.com{path}</loc>"
