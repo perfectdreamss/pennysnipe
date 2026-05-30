@@ -17,6 +17,8 @@ env/
 
 # Local data — never commit the database or logs
 deals.db
+deals.db-shm
+deals.db-wal
 deals.log
 seen_deals.json
 
