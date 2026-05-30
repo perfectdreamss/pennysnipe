@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from typing import Optional
 
 import feedparser
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, make_response
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # ── Config ─────────────────────────────────────────────────────────────────────
@@ -496,6 +496,13 @@ def privacy():
 @app.route("/2hi")
 def two_hi():
     return render_template("2hi.html")
+
+@app.route("/sw.js")
+def service_worker():
+    r = make_response(open('static/sw.js').read())
+    r.headers['Content-Type'] = 'application/javascript'
+    r.headers['Service-Worker-Allowed'] = '/'
+    return r
 
 @app.route("/robots.txt")
 def robots():
